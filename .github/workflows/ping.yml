@@ -1,0 +1,18 @@
+name: Keep All Render Servers Awake
+
+on:
+  schedule:
+    - cron: "*/12 * * * *"  # every 12 minutes
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping all Render apps
+        run: |
+          echo "Pinging all servers..."
+          curl -I https://beltrandsmarketbackend.onrender.com
+          curl -I https://beltrandsmarketbackend.onrender.com
+          echo "✅ All pings completed successfully."
